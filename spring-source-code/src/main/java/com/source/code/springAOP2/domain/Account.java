@@ -9,6 +9,10 @@ public class Account {
 
     private BigDecimal balance;
 
+    public  Account(Integer id, BigDecimal balance){
+
+    }
+
     public Integer getId() {
         return id;
     }

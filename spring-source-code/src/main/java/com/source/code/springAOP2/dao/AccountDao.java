@@ -12,7 +12,7 @@ public class AccountDao {
     @Resource
     JdbcTemplate jdbcTemplate;
 
-    void updateAccount(Account account) {
+    public void updateAccount(Account account) {
         String sql = "update account set balance = balance - ? where id=?";
         jdbcTemplate.update(sql,account.getBalance(), account.getId());
     }

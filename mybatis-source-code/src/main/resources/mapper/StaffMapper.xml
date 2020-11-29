@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.source.code.springMybatis.dao.StaffDao">
+
+    <resultMap id="baseResultMap" type="com.source.code.springMybatis.domain.Staff">
+        <id property="id" jdbcType="INTEGER" column="id" />
+        <result property="name" jdbcType="VARCHAR" column="name" />
+        <result property="depId" jdbcType="INTEGER" column="dep_id" />
+    </resultMap>
+
+    <select id="selectById" parameterType="java.lang.Integer" resultMap="baseResultMap" >
+
+        select id,name,dep_id from staff where id=#{id}
+    </select>
+
+
+    <update id="updateStaff" parameterType="com.source.code.springMybatis.domain.Staff">
+        update staff set name=#{name} where id=#{id}
+    </update>
+
+</mapper>

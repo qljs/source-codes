@@ -8,6 +8,12 @@ public class Product {
 
     private Integer num;
 
+    public Product(Integer id, String name, Integer num) {
+        this.id = id;
+        this.name = name;
+        this.num = num;
+    }
+
     public Integer getId() {
         return id;
     }
