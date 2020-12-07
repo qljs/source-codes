@@ -3,7 +3,11 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.3.0.RELEASE</version>
+    </parent>
     <groupId>org.source.code</groupId>
     <artifactId>source-codes</artifactId>
     <packaging>pom</packaging>
@@ -11,25 +15,19 @@
     <modules>
         <module>spring-source-code</module>
         <module>mybatis-source-code</module>
+        <module>springboot-source-code</module>
+        <module>concurrent-source-code</module>
     </modules>
 
 
     <properties>
-        <springboot>2.2.2.RELEASE</springboot>
         <aspectj>1.9.6</aspectj>
-        <mysql>8.0.15</mysql>
-        <spring-jdbc>5.2.9.RELEASE</spring-jdbc>
-        <spring-boot-dependencies>2.2.6.RELEASE</spring-boot-dependencies>
         <druid>1.1.22</druid>
     </properties>
 
     <dependencyManagement>
         <dependencies>
-            <dependency>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-starter</artifactId>
-                <version>${springboot}</version>
-            </dependency>
+
             <dependency>
                 <groupId>org.aspectj</groupId>
                 <artifactId>aspectjweaver</artifactId>
@@ -40,23 +38,7 @@
                 <artifactId>aspectjrt</artifactId>
                 <version>${aspectj}</version>
             </dependency>
-            <dependency>
-                <groupId>mysql</groupId>
-                <artifactId>mysql-connector-java</artifactId>
-                <version>${mysql}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.springframework</groupId>
-                <artifactId>spring-jdbc</artifactId>
-                <version>${spring-jdbc}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-dependencies</artifactId>
-                <version>${spring-boot-dependencies}</version>
-                <type>pom</type>
-                <scope>provided</scope>
-            </dependency>
+
             <dependency>
                 <groupId>com.alibaba</groupId>
                 <artifactId>druid</artifactId>
