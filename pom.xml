@@ -17,6 +17,8 @@
     <modules>
         <module>spring-source-code</module>
         <module>mybatis-source-code</module>
+        <module>springboot-source-code</module>
+        <module>concurrent-source-code</module>
     </modules>
 
 
