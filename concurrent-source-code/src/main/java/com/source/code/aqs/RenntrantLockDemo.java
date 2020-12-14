@@ -1,4 +1,4 @@
-package com.source.code;
+package com.source.code.aqs;
 
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
