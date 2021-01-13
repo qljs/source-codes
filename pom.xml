@@ -19,6 +19,11 @@
         <module>mybatis-source-code</module>
         <module>springboot-source-code</module>
         <module>concurrent-source-code</module>
+        <module>connection-source-code</module>
+        <module>zk-source-code</module>
+        <module>redis-lock</module>
+        <module>rabbitmq-java</module>
+        <module>rabbitmq-spring</module>
     </modules>
 
 
