@@ -1,9 +1,6 @@
 package com.rabbitmq.config;
 
-import org.springframework.amqp.core.DirectExchange;
-import org.springframework.amqp.core.FanoutExchange;
-import org.springframework.amqp.core.Queue;
-import org.springframework.amqp.core.TopicExchange;
+import org.springframework.amqp.core.*;
 import org.springframework.amqp.rabbit.connection.CachingConnectionFactory;
 import org.springframework.amqp.rabbit.connection.ConnectionFactory;
 import org.springframework.amqp.rabbit.core.RabbitAdmin;
@@ -24,25 +21,19 @@ public class RabbtiMqConfig {
 
         factory.setPassword("mq");
         factory.setConnectionTimeout(10000);
+        factory.setPublisherReturns(true);
+        factory.setPublisherConfirmType(CachingConnectionFactory.ConfirmType.CORRELATED);
         return factory;
     }
 
 
     @Bean
-    public RabbitAdmin rabbitAdmin(ConnectionFactory connectionFactory) {
+    public AmqpAdmin amqpAdmin(ConnectionFactory connectionFactory) {
         // RabbitAdmin：管理队列和交换机
         RabbitAdmin rabbitAdmin = new RabbitAdmin(connectionFactory);
         // spring容器启动时加载
         rabbitAdmin.setAutoStartup(true);
         return rabbitAdmin;
-    }
-
-    @Bean
-    public RabbitTemplate rabbitTemplate(){
-        RabbitTemplate rabbitTemplate = new RabbitTemplate();
-        rabbitTemplate.setConnectionFactory(connectionFactory());
-        rabbitTemplate.setReceiveTimeout(50000);
-        return rabbitTemplate;
     }
 
 
@@ -68,20 +59,26 @@ public class RabbtiMqConfig {
     // ============= 声明队列 =======
     @Bean
     public Queue topicQueue(){
-        Queue queue = new Queue("topicQueue", true, false, true);
+        Queue queue = new Queue("topicQueue", true, false, false);
         return queue;
     }
 
     @Bean
     public Queue directQueue(){
-        Queue queue = new Queue("directQueue", true, false, true);
+        Queue queue = new Queue("directQueue", true, false, false);
         return queue;
     }
 
     @Bean
     public Queue fanoutQueue(){
-        Queue queue = new Queue("fanoutQueue", true, false, true);
+        Queue queue = new Queue("fanoutQueue", true, false, false);
         return queue;
     }
 
+    @Bean
+    public RabbitTemplate rabbitTemplate() {
+        RabbitTemplate rabbitTemplate = new RabbitTemplate(connectionFactory());
+        rabbitTemplate.setReceiveTimeout(50000);
+        return rabbitTemplate;
+    }
 }
