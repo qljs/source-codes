@@ -40,8 +40,7 @@ public class RabbitMqTest {
 
     @Test
     public void testSendMess() throws InterruptedException, ExecutionException {
-        Binding binding = new Binding("topicQueue", Binding.DestinationType.QUEUE,"my_topicExchange","topic",null);
-        amqpAdmin.declareBinding(binding);
+
         MessageProperties properties = new MessageProperties();
         properties.setMessageId("messageId");
 

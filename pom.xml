@@ -24,6 +24,9 @@
         <module>redis-lock</module>
         <module>rabbitmq-java</module>
         <module>rabbitmq-spring</module>
+        <module>rocketmq-demo</module>
+        <module>kafka-demo</module>
+        <module>shardingSphere-demo</module>
     </modules>
 
 

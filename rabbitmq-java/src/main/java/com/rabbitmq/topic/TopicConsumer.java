@@ -10,6 +10,8 @@ public class TopicConsumer {
     public static void main(String[] args) throws Exception{
         Connection connection = RabbitMQUitl.getConnection();
         Channel channel = connection.createChannel();
+        channel.exchangeDeclare("topic_exchanges","topic",true);
+
         channel.queueDeclare("topic1", false, false, false,null);
         channel.queueBind("topic1", "topic_exchanges","topic.*");
        while (true) {

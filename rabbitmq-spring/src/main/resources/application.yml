@@ -1,0 +1,32 @@
+server:
+  port: 8080
+
+spring:
+  rabbitmq:
+    host: 172.16.33.52
+    port: 5672
+    username: mq
+    password: mq
+    virtual-host: my_vhost
+    publisher-returns: true
+    # 开启cofirm机制
+    publisher-confirm-type: correlated
+    connection-timeout: 30000
+    listener:
+      # 消费端ack
+      simple:
+        acknowledge-mode: manual
+        default-requeue-rejected: false
+        retry:
+          enabled: true
+      direct:
+        acknowledge-mode: manual
+        default-requeue-rejected: false
+    # 生产者失败重试，默认3次
+    template:
+      retry:
+        enabled: true
+
+
+
+
